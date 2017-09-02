@@ -204,7 +204,9 @@ module.exports = Field.create({
 					type="hidden"
 				/>
 			);
-		} else if (this.getCount('isDeleted') === this.props.value.length) {
+		// } else if (this.getCount('isDeleted') === this.props.value.length) { 
+		//FIX Creating new element in nested-list where CloudinaryImages is a field fails in Admin UI #4362
+		} else if (this.props.value === undefined || this.getCount('isDeleted') === this.props.value.length) {
 			return (
 				<input
 					name={this.getInputName(this.props.path)}
